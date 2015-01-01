@@ -1,0 +1,246 @@
+$max-width: 960px;
+$guttering-width: 10px;
+
+@mixin clearfix{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+@mixin whole {
+	max-width: 100%;
+}
+
+@mixin getColumnWidth($totalColumns, $columnLength){
+
+	width: percentage(
+			(
+				(
+					(
+						(
+							($max-width - ($totalColumns - 1) * $guttering-width) 
+								/ $totalColumns
+						) 
+						* $columnLength
+					) 
+					+ ($columnLength - 1) * $guttering-width
+				) 
+				/ $max-width
+			)
+		);
+}
+
+@media screen and (max-width: 800px) {
+	.grid-column {
+		width: 95%;
+		float: none;
+		text-align: center;
+		margin: 0 auto;
+		margin-bottom: $guttering-width;
+	}
+}
+
+.grid {
+	max-width: $max-width;
+	margin: 0 auto;
+	padding: 0 $guttering-width;
+}
+
+.grid-row {
+	@include whole;
+}
+
+.grid-row::after{
+	@include clearfix;
+}
+
+@media screen and (min-width: 801px){
+
+	.grid-column {
+		float: left;
+		margin-right: percentage($guttering-width / $max-width);
+	}
+
+	.grid-column--last {
+		margin-right: 0px;
+	}
+
+	.grid-row--one {
+
+		.grid-column--single {
+			@include getColumnWidth(1, 1);
+		}
+
+	}
+
+	.grid-row--two {
+
+		.grid-column--single {
+			@include getColumnWidth(2, 1);
+		}
+
+		.grid-column--double {
+			@include whole;
+		}
+
+	}
+
+	.grid-row--three {
+
+		.grid-column--single {
+			@include getColumnWidth(3, 1);
+		}
+
+		.grid-column--double {
+			@include getColumnWidth(3, 2);
+		}
+
+		.grid-column--triple {
+			@include whole;
+		}
+
+	}
+
+	.grid-row--four {
+
+		.grid-column--single {
+			@include getColumnWidth(4, 1);
+		}
+
+		.grid-column--double {
+			@include getColumnWidth(4, 2);
+		}
+
+		.grid-column--triple {
+			@include getColumnWidth(4, 3);
+		}
+
+		.grid-column--quadruple {
+			@include whole;
+		}
+
+	}
+
+	.grid-row--five {
+
+		.grid-column--single {
+			@include getColumnWidth(5, 1);
+		}
+
+		.grid-column--double {
+			@include getColumnWidth(5, 2);
+		}
+
+		.grid-column--triple {
+			@include getColumnWidth(5, 3);
+		}
+
+		.grid-column--quadruple {
+			@include getColumnWidth(5, 4);
+		}
+
+		.grid-column--quintuple {
+			@include whole;
+		}
+
+	}
+
+	.grid-row--six {
+
+		.grid-column--single {
+			@include getColumnWidth(6, 1);
+		}
+
+		.grid-column--double {
+			@include getColumnWidth(6, 2);
+		}
+
+		.grid-column--triple {
+			@include getColumnWidth(6, 3);
+		}
+
+		.grid-column--quadruple {
+			@include getColumnWidth(6, 4);
+		}
+
+		.grid-column--quintuple {
+			@include getColumnWidth(6, 5);
+		}
+
+		.grid-column--sextuple {
+			@include whole;
+		}
+
+	}
+
+	.grid-row--seven {
+
+		.grid-column--single {
+			@include getColumnWidth(7, 1);
+		}
+
+		.grid-column--double {
+			@include getColumnWidth(7, 2);
+		}
+
+		.grid-column--triple {
+			@include getColumnWidth(7, 3);
+		}
+
+		.grid-column--quadruple {
+			@include getColumnWidth(7, 4);
+		}
+
+		.grid-column--quintuple {
+			@include getColumnWidth(7, 5);
+		}
+
+		.grid-column--sextuple {
+			@include getColumnWidth(7, 6);
+		}
+
+		.grid-column--septuple {
+			@include whole;
+		}
+
+	}
+
+	.grid-row--eight {
+
+		.grid-column--single {
+			@include getColumnWidth(8, 1);
+		}
+
+		.grid-column--double {
+			@include getColumnWidth(8, 2);
+		}
+
+		.grid-column--triple {
+			@include getColumnWidth(8, 3);
+		}
+
+		.grid-column--quadruple {
+			@include getColumnWidth(8, 4);
+		}
+
+		.grid-column--quintuple {
+			@include getColumnWidth(8, 5);
+		}
+
+		.grid-column--sextuple {
+			@include getColumnWidth(8, 6);
+		}
+
+		.grid-column--septuple {
+			@include getColumnWidth(8, 7);
+		}
+
+		.grid-column--quintuple {
+			@include whole;
+		}
+
+	}
+}
